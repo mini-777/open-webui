@@ -15,7 +15,7 @@
 	export let getModels: Function;
 
 	// General
-	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark'];
+	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark', 'colorblind'];
 	let selectedTheme = 'system';
 
 	let languages: Awaited<ReturnType<typeof getLanguages>> = [];
@@ -205,7 +205,9 @@
 							? '#000000'
 							: _theme === 'her'
 								? '#983724'
-								: '#ffffff'
+								: _theme === 'colorblind'
+									? '#144266'
+									: '#ffffff'
 				);
 			}
 		}
@@ -220,6 +222,29 @@
 			document.documentElement.style.setProperty('--color-gray-900', '#000000');
 			document.documentElement.style.setProperty('--color-gray-950', '#000000');
 			document.documentElement.classList.add('dark');
+		}
+
+		// Apply colorblind theme styles
+		if (_theme === 'colorblind') {
+			// Apply base dark theme
+			document.documentElement.classList.add('dark');
+			
+			// Set colorblind-friendly color scheme
+			// Higher contrast for better visibility
+			document.documentElement.style.setProperty('--color-gray-800', '#1e3347');
+			document.documentElement.style.setProperty('--color-gray-850', '#102030');
+			document.documentElement.style.setProperty('--color-gray-900', '#0b1824');
+			document.documentElement.style.setProperty('--color-gray-950', '#071119');
+			
+			// Override accent colors for better distinction (avoiding red/green confusion)
+			document.documentElement.style.setProperty('--color-blue-500', '#0074D9'); // Main blue
+			document.documentElement.style.setProperty('--color-yellow-500', '#F5D742'); // Replace green with yellow
+			document.documentElement.style.setProperty('--color-orange-500', '#FF851B'); // Use orange instead of red
+			document.documentElement.style.setProperty('--color-purple-500', '#9E44C4'); // Distinct purple
+			
+			// Increase contrast in text
+			document.documentElement.style.setProperty('--color-text', '#ffffff');
+			document.documentElement.style.setProperty('--color-text-secondary', '#d0d0d0');
 		}
 
 		console.log(_theme);
@@ -251,6 +276,7 @@
 						<option value="oled-dark">🌃 {$i18n.t('OLED Dark')}</option>
 						<option value="light">☀️ {$i18n.t('Light')}</option>
 						<option value="her">🌷 Her</option>
+						<option value="colorblind">👁️ {$i18n.t('Colorblind')}</option>
 						<!-- <option value="rose-pine dark">🪻 {$i18n.t('Rosé Pine')}</option>
 						<option value="rose-pine-dawn light">🌷 {$i18n.t('Rosé Pine Dawn')}</option> -->
 					</select>

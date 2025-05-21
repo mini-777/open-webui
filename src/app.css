@@ -1,4 +1,5 @@
 @reference "./tailwind.css";
+@reference "./lib/styles/colorblind.css";
 
 @font-face {
 	font-family: 'Inter';

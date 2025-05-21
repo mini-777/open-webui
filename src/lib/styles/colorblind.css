@@ -1,0 +1,81 @@
+/* Colorblind-friendly theme styles */
+:root.colorblind {
+  /* Base colors with high contrast for better visibility */
+  --color-blue-500: #0074D9;
+  --color-yellow-500: #F5D742;
+  --color-orange-500: #FF851B;
+  --color-purple-500: #9E44C4;
+  
+  /* Background colors with blue tint for dark mode */
+  --color-gray-800: #1e3347;
+  --color-gray-850: #102030;
+  --color-gray-900: #0b1824;
+  --color-gray-950: #071119;
+  
+  /* Text colors with high contrast */
+  --color-text: #ffffff;
+  --color-text-secondary: #d0d0d0;
+  
+  /* Button and interactive element colors */
+  --color-button-primary: #0074D9;
+  --color-button-secondary: #F5D742;
+  --color-button-danger: #FF851B;
+  
+  /* Alert and notification colors */
+  --color-success: #26ABED; /* Blue instead of green */
+  --color-warning: #F5D742; /* Yellow */
+  --color-error: #FF851B;   /* Orange instead of red */
+  --color-info: #9E44C4;    /* Purple */
+  
+  /* Border colors */
+  --color-border: #3a4d5c;
+  --color-border-hover: #5a7d96;
+  
+  /* Link colors */
+  --color-link: #26ABED;
+  --color-link-hover: #74c7ff;
+  
+  /* Code block backgrounds */
+  --color-code-bg: #102030;
+  --color-code-text: #ffffff;
+}
+
+/* Additional high contrast styles for better accessibility */
+:root.colorblind .ProseMirror p.is-editor-empty:first-child::before {
+  color: #a0b3c7;
+}
+
+:root.colorblind code {
+  background-color: #102030;
+  color: #ffffff;
+  border: 1px solid #3a4d5c;
+}
+
+:root.colorblind button:focus-visible,
+:root.colorblind a:focus-visible,
+:root.colorblind input:focus-visible,
+:root.colorblind select:focus-visible,
+:root.colorblind textarea:focus-visible {
+  outline: 2px solid #26ABED;
+  outline-offset: 2px;
+}
+
+/* High contrast borders for content separation */
+:root.colorblind .border-gray-100 {
+  border-color: #3a4d5c;
+}
+
+:root.colorblind .border-gray-200 {
+  border-color: #2a3a47;
+}
+
+/* Specific styles for chat bubbles and messages */
+:root.colorblind .chat-bubble-user {
+  background-color: #1e3347;
+  border: 1px solid #3a4d5c;
+}
+
+:root.colorblind .chat-bubble-assistant {
+  background-color: #102030;
+  border: 1px solid #3a4d5c;
+} 
