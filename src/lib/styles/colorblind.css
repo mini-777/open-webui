@@ -1,81 +1,161 @@
-/* Colorblind-friendly theme styles */
+/* Colorblind-friendly theme styles - Research-based color palette */
 :root.colorblind {
-  /* Base colors with high contrast for better visibility */
-  --color-blue-500: #0074D9;
-  --color-yellow-500: #F5D742;
-  --color-orange-500: #FF851B;
-  --color-purple-500: #9E44C4;
-  
-  /* Background colors with blue tint for dark mode */
-  --color-gray-800: #1e3347;
-  --color-gray-850: #102030;
-  --color-gray-900: #0b1824;
-  --color-gray-950: #071119;
-  
-  /* Text colors with high contrast */
-  --color-text: #ffffff;
-  --color-text-secondary: #d0d0d0;
-  
-  /* Button and interactive element colors */
-  --color-button-primary: #0074D9;
-  --color-button-secondary: #F5D742;
-  --color-button-danger: #FF851B;
-  
-  /* Alert and notification colors */
-  --color-success: #26ABED; /* Blue instead of green */
-  --color-warning: #F5D742; /* Yellow */
-  --color-error: #FF851B;   /* Orange instead of red */
-  --color-info: #9E44C4;    /* Purple */
-  
-  /* Border colors */
-  --color-border: #3a4d5c;
-  --color-border-hover: #5a7d96;
-  
-  /* Link colors */
-  --color-link: #26ABED;
-  --color-link-hover: #74c7ff;
-  
-  /* Code block backgrounds */
-  --color-code-bg: #102030;
-  --color-code-text: #ffffff;
+	/* Primary colors optimized for all types of color blindness */
+	/* Blue and Orange are the safest combination for color-blind users */
+	--color-blue-500: #0072b2; /* Strong blue - universally distinguishable */
+	--color-orange-500: #e69f00; /* Warm orange - safe for all color blindness types */
+	--color-yellow-500: #f0e442; /* Bright yellow - highly visible */
+	--color-purple-500: #cc79a7; /* Reddish purple - better contrast than pure purple */
+	--color-green-500: #009e73; /* Bluish green - distinguishable from red */
+	--color-red-500: #d55e00; /* Vermillion red - better than pure red */
+	--color-skyblue-500: #56b4e9; /* Sky blue - lighter blue variant */
+
+	/* Background colors with enhanced blue tint for better accessibility */
+	--color-gray-800: #1a2f42; /* Deeper blue-gray */
+	--color-gray-850: #0f1e2d; /* Darker blue-gray */
+	--color-gray-900: #0a1520; /* Very dark blue-gray */
+	--color-gray-950: #05080c; /* Almost black with blue hint */
+
+	/* Text colors with maximum contrast */
+	--color-text: #ffffff;
+	--color-text-secondary: #e0e8f0;
+	--color-text-muted: #b8c5d1;
+
+	/* Button and interactive element colors - using research-based palette */
+	--color-button-primary: #0072b2; /* Strong blue for primary actions */
+	--color-button-secondary: #56b4e9; /* Sky blue for secondary actions */
+	--color-button-danger: #d55e00; /* Vermillion for destructive actions */
+	--color-button-success: #009e73; /* Bluish green for success */
+
+	/* Alert and notification colors - following color-blind safe guidelines */
+	--color-success: #009e73; /* Bluish green instead of pure green */
+	--color-warning: #f0e442; /* Bright yellow - universally visible */
+	--color-error: #d55e00; /* Vermillion instead of pure red */
+	--color-info: #56b4e9; /* Sky blue for information */
+
+	/* Interactive states with proper contrast */
+	--color-hover: #e69f00; /* Orange for hover states */
+	--color-focus: #f0e442; /* Yellow for focus outlines */
+	--color-active: #cc79a7; /* Reddish purple for active states */
+
+	/* Border colors with enhanced visibility */
+	--color-border: #3a4d5c;
+	--color-border-hover: #56b4e9;
+	--color-border-focus: #f0e442;
+
+	/* Link colors */
+	--color-link: #56b4e9; /* Sky blue for links */
+	--color-link-hover: #e69f00; /* Orange for link hover */
+	--color-link-visited: #cc79a7; /* Reddish purple for visited links */
+
+	/* Code block backgrounds */
+	--color-code-bg: #0f1e2d;
+	--color-code-text: #e0e8f0;
+	--color-code-border: #3a4d5c;
+
+	/* Form elements */
+	--color-input-bg: #1a2f42;
+	--color-input-border: #3a4d5c;
+	--color-input-border-focus: #f0e442;
+	--color-input-text: #ffffff;
+
+	/* Status indicators using patterns + color for redundancy */
+	--color-status-online: #009e73;
+	--color-status-away: #f0e442;
+	--color-status-busy: #d55e00;
+	--color-status-offline: #888888;
 }
 
-/* Additional high contrast styles for better accessibility */
+/* Enhanced high contrast styles for better accessibility */
 :root.colorblind .ProseMirror p.is-editor-empty:first-child::before {
-  color: #a0b3c7;
+	color: #b8c5d1;
 }
 
 :root.colorblind code {
-  background-color: #102030;
-  color: #ffffff;
-  border: 1px solid #3a4d5c;
+	background-color: var(--color-code-bg);
+	color: var(--color-code-text);
+	border: 1px solid var(--color-code-border);
+	padding: 2px 4px;
+	border-radius: 3px;
 }
 
+/* Focus indicators with high contrast and multiple visual cues */
 :root.colorblind button:focus-visible,
 :root.colorblind a:focus-visible,
 :root.colorblind input:focus-visible,
 :root.colorblind select:focus-visible,
 :root.colorblind textarea:focus-visible {
-  outline: 2px solid #26ABED;
-  outline-offset: 2px;
+	outline: 3px solid var(--color-focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 1px var(--color-border-focus);
 }
 
-/* High contrast borders for content separation */
+/* Enhanced border styles for content separation */
 :root.colorblind .border-gray-100 {
-  border-color: #3a4d5c;
+	border-color: var(--color-border);
 }
 
 :root.colorblind .border-gray-200 {
-  border-color: #2a3a47;
+	border-color: #2a3a47;
 }
 
-/* Specific styles for chat bubbles and messages */
+/* Chat bubbles with improved contrast and visual distinction */
 :root.colorblind .chat-bubble-user {
-  background-color: #1e3347;
-  border: 1px solid #3a4d5c;
+	background-color: var(--color-gray-800);
+	border: 2px solid var(--color-blue-500);
+	border-left: 4px solid var(--color-orange-500);
 }
 
 :root.colorblind .chat-bubble-assistant {
-  background-color: #102030;
-  border: 1px solid #3a4d5c;
-} 
+	background-color: var(--color-gray-850);
+	border: 2px solid var(--color-border);
+	border-left: 4px solid var(--color-green-500);
+}
+
+/* Button states with clear visual feedback */
+:root.colorblind button:hover {
+	background-color: var(--color-hover);
+	transition: background-color 0.2s ease;
+}
+
+:root.colorblind button:active {
+	background-color: var(--color-active);
+	transform: translateY(1px);
+}
+
+/* Form validation colors */
+:root.colorblind .error {
+	color: var(--color-error);
+	border-color: var(--color-error);
+}
+
+:root.colorblind .success {
+	color: var(--color-success);
+	border-color: var(--color-success);
+}
+
+:root.colorblind .warning {
+	color: var(--color-warning);
+	border-color: var(--color-warning);
+}
+
+/* Additional patterns for redundant coding */
+:root.colorblind .pattern-success::before {
+	content: '✓ ';
+	font-weight: bold;
+}
+
+:root.colorblind .pattern-error::before {
+	content: '⚠ ';
+	font-weight: bold;
+}
+
+:root.colorblind .pattern-warning::before {
+	content: '! ';
+	font-weight: bold;
+}
+
+:root.colorblind .pattern-info::before {
+	content: 'i ';
+	font-weight: bold;
+}
