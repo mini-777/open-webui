@@ -58,6 +58,18 @@
 					document.documentElement.classList.add('dark');
 					document.documentElement.classList.add('her');
 					metaThemeColorTag.setAttribute('content', '#983724');
+				} else if (localStorage.theme === 'colorblind') {
+					// Apply base dark theme
+					document.documentElement.classList.add('dark');
+					document.documentElement.classList.add('colorblind');
+
+					// Set colorblind-friendly color scheme with higher contrast
+					document.documentElement.style.setProperty('--color-gray-800', '#1e3347');
+					document.documentElement.style.setProperty('--color-gray-850', '#102030');
+					document.documentElement.style.setProperty('--color-gray-900', '#0b1824');
+					document.documentElement.style.setProperty('--color-gray-950', '#071119');
+
+					metaThemeColorTag.setAttribute('content', '#144266');
 				} else {
 					document.documentElement.classList.add('dark');
 					metaThemeColorTag.setAttribute('content', '#171717');
@@ -202,6 +214,10 @@
 
 	html.her #splash-screen {
 		background: #983724;
+	}
+
+	html.colorblind #splash-screen {
+		background: #144266;
 	}
 
 	#logo-her {
