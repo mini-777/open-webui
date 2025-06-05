@@ -15,7 +15,14 @@
 	export let getModels: Function;
 
 	// General
-	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark', 'colorblind'];
+	let themes = [
+		'dark',
+		'light',
+		'rose-pine dark',
+		'rose-pine-dawn light',
+		'oled-dark',
+		'colorblind'
+	];
 	let selectedTheme = 'system';
 
 	let languages: Awaited<ReturnType<typeof getLanguages>> = [];
@@ -228,20 +235,20 @@
 		if (_theme === 'colorblind') {
 			// Apply base dark theme
 			document.documentElement.classList.add('dark');
-			
+
 			// Set colorblind-friendly color scheme
 			// Higher contrast for better visibility
 			document.documentElement.style.setProperty('--color-gray-800', '#1e3347');
 			document.documentElement.style.setProperty('--color-gray-850', '#102030');
 			document.documentElement.style.setProperty('--color-gray-900', '#0b1824');
 			document.documentElement.style.setProperty('--color-gray-950', '#071119');
-			
+
 			// Override accent colors for better distinction (avoiding red/green confusion)
 			document.documentElement.style.setProperty('--color-blue-500', '#0074D9'); // Main blue
 			document.documentElement.style.setProperty('--color-yellow-500', '#F5D742'); // Replace green with yellow
 			document.documentElement.style.setProperty('--color-orange-500', '#FF851B'); // Use orange instead of red
 			document.documentElement.style.setProperty('--color-purple-500', '#9E44C4'); // Distinct purple
-			
+
 			// Increase contrast in text
 			document.documentElement.style.setProperty('--color-text', '#ffffff');
 			document.documentElement.style.setProperty('--color-text-secondary', '#d0d0d0');
@@ -257,16 +264,16 @@
 	};
 </script>
 
-<div class="flex flex-col h-full justify-between text-sm">
+<div class="flex flex-col justify-between h-full text-sm">
 	<div class="  overflow-y-scroll max-h-[28rem] lg:max-h-full">
 		<div class="">
-			<div class=" mb-1 text-sm font-medium">{$i18n.t('WebUI Settings')}</div>
+			<div class="mb-1 text-sm font-medium">{$i18n.t('WebUI Settings')}</div>
 
-			<div class="flex w-full justify-between">
-				<div class=" self-center text-xs font-medium">{$i18n.t('Theme')}</div>
-				<div class="flex items-center relative">
+			<div class="flex justify-between w-full">
+				<div class="self-center text-xs font-medium">{$i18n.t('Theme')}</div>
+				<div class="flex relative items-center">
 					<select
-						class=" dark:bg-gray-900 w-fit pr-8 rounded-sm py-2 px-2 text-xs bg-transparent outline-hidden text-right"
+						class="px-2 py-2 pr-8 text-xs text-right bg-transparent rounded-sm dark:bg-gray-900 w-fit outline-hidden"
 						bind:value={selectedTheme}
 						placeholder="Select a theme"
 						on:change={() => themeChangeHandler(selectedTheme)}
@@ -283,11 +290,11 @@
 				</div>
 			</div>
 
-			<div class=" flex w-full justify-between">
-				<div class=" self-center text-xs font-medium">{$i18n.t('Language')}</div>
-				<div class="flex items-center relative">
+			<div class="flex justify-between w-full">
+				<div class="self-center text-xs font-medium">{$i18n.t('Language')}</div>
+				<div class="flex relative items-center">
 					<select
-						class=" dark:bg-gray-900 w-fit pr-8 rounded-sm py-2 px-2 text-xs bg-transparent outline-hidden text-right"
+						class="px-2 py-2 pr-8 text-xs text-right bg-transparent rounded-sm dark:bg-gray-900 w-fit outline-hidden"
 						bind:value={lang}
 						placeholder="Select a language"
 						on:change={(e) => {
@@ -304,7 +311,7 @@
 				<div class="mb-2 text-xs text-gray-400 dark:text-gray-500">
 					Couldn't find your language?
 					<a
-						class=" text-gray-300 font-medium underline"
+						class="font-medium text-gray-300 underline"
 						href="https://github.com/open-webui/open-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization"
 						target="_blank"
 					>
@@ -314,20 +321,20 @@
 			{/if}
 
 			<div>
-				<div class=" py-0.5 flex w-full justify-between">
-					<div class=" self-center text-xs font-medium">{$i18n.t('Notifications')}</div>
+				<div class="flex justify-between py-0.5 w-full">
+					<div class="self-center text-xs font-medium">{$i18n.t('Notifications')}</div>
 
 					<button
-						class="p-1 px-3 text-xs flex rounded-sm transition"
+						class="flex p-1 px-3 text-xs rounded-sm transition"
 						on:click={() => {
 							toggleNotification();
 						}}
 						type="button"
 					>
 						{#if notificationEnabled === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span class="self-center ml-2">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span class="self-center ml-2">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -335,10 +342,10 @@
 		</div>
 
 		{#if $user?.role === 'admin' || $user?.permissions.chat?.controls}
-			<hr class="border-gray-50 dark:border-gray-850 my-3" />
+			<hr class="my-3 border-gray-50 dark:border-gray-850" />
 
 			<div>
-				<div class=" my-2.5 text-sm font-medium">{$i18n.t('System Prompt')}</div>
+				<div class="my-2.5 text-sm font-medium">{$i18n.t('System Prompt')}</div>
 				<Textarea
 					bind:value={system}
 					className="w-full text-sm bg-white dark:text-gray-300 dark:bg-gray-900 outline-hidden resize-none"
@@ -347,11 +354,11 @@
 				/>
 			</div>
 
-			<div class="mt-2 space-y-3 pr-1.5">
+			<div class="pr-1.5 mt-2 space-y-3">
 				<div class="flex justify-between items-center text-sm">
-					<div class="  font-medium">{$i18n.t('Advanced Parameters')}</div>
+					<div class="font-medium">{$i18n.t('Advanced Parameters')}</div>
 					<button
-						class=" text-xs font-medium text-gray-500"
+						class="text-xs font-medium text-gray-500"
 						type="button"
 						on:click={() => {
 							showAdvanced = !showAdvanced;
@@ -361,23 +368,23 @@
 
 				{#if showAdvanced}
 					<AdvancedParams admin={$user?.role === 'admin'} bind:params />
-					<hr class=" border-gray-100 dark:border-gray-850" />
+					<hr class="border-gray-100 dark:border-gray-850" />
 
-					<div class=" w-full justify-between">
-						<div class="flex w-full justify-between">
-							<div class=" self-center text-xs font-medium">{$i18n.t('Keep Alive')}</div>
+					<div class="justify-between w-full">
+						<div class="flex justify-between w-full">
+							<div class="self-center text-xs font-medium">{$i18n.t('Keep Alive')}</div>
 
 							<button
-								class="p-1 px-3 text-xs flex rounded-sm transition"
+								class="flex p-1 px-3 text-xs rounded-sm transition"
 								type="button"
 								on:click={() => {
 									keepAlive = keepAlive === null ? '5m' : null;
 								}}
 							>
 								{#if keepAlive === null}
-									<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
+									<span class="self-center ml-2"> {$i18n.t('Default')} </span>
 								{:else}
-									<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+									<span class="self-center ml-2"> {$i18n.t('Custom')} </span>
 								{/if}
 							</button>
 						</div>
@@ -395,29 +402,29 @@
 					</div>
 
 					<div>
-						<div class=" flex w-full justify-between">
-							<div class=" self-center text-xs font-medium">{$i18n.t('Request Mode')}</div>
+						<div class="flex justify-between w-full">
+							<div class="self-center text-xs font-medium">{$i18n.t('Request Mode')}</div>
 
 							<button
-								class="p-1 px-3 text-xs flex rounded-sm transition"
+								class="flex p-1 px-3 text-xs rounded-sm transition"
 								on:click={() => {
 									toggleRequestFormat();
 								}}
 							>
 								{#if requestFormat === null}
-									<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
+									<span class="self-center ml-2"> {$i18n.t('Default')} </span>
 								{:else}
 									<!-- <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             fill="currentColor"
-                            class="w-4 h-4 self-center"
+                            class="self-center w-4 h-4"
                         >
                             <path
                                 d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6zM15.657 5.404a.75.75 0 10-1.06-1.06l-1.061 1.06a.75.75 0 001.06 1.06l1.06-1.06zM6.464 14.596a.75.75 0 10-1.06-1.06l-1.06 1.06a.75.75 0 001.06 1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zM14.596 15.657a.75.75 0 001.06-1.06l-1.06-1.061a.75.75 0 10-1.06 1.06l1.06 1.06zM5.404 6.464a.75.75 0 001.06-1.06l-1.06-1.06a.75.75 0 10-1.061 1.06l1.06 1.06z"
                             />
                         </svg> -->
-									<span class="ml-2 self-center"> {$i18n.t('JSON')} </span>
+									<span class="self-center ml-2"> {$i18n.t('JSON')} </span>
 								{/if}
 							</button>
 						</div>
@@ -439,7 +446,7 @@
 
 	<div class="flex justify-end pt-3 text-sm font-medium">
 		<button
-			class="px-3.5 py-1.5 text-sm font-medium bg-black hover:bg-gray-900 text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full"
+			class="px-3.5 py-1.5 text-sm font-medium text-white bg-black rounded-full transition hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100"
 			on:click={() => {
 				saveHandler();
 			}}
